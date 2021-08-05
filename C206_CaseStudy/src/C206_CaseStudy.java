@@ -22,7 +22,7 @@ public class C206_CaseStudy {
 				addStall(StallList, inputStall());
 
 			} else if (option == 2) {
-				// view a existing stall
+				// view all stalls
 				C206_CaseStudy.viewExistingStall(StallList);
 
 			} else if (option == 3) {
@@ -53,18 +53,10 @@ public class C206_CaseStudy {
 	public static String retrieveStall(ArrayList<Stall> StallList) {
 		String output = "";
 
-		String search = Helper.readString("Enter Stall name to view > ");
 		for (int i = 0; i < StallList.size(); i++) {
 
-			if (search.equalsIgnoreCase(StallList.get(i).getName())) {
+			output += String.format("%-20s %-20s\n", StallList.get(i).getName(), StallList.get(i).getDate());
 
-				output += String.format("%-20s %-20s\n", StallList.get(i).getName(), StallList.get(i).getDate());
-			}else {
-				output+="Stall cannot be found ";
-			}
-		
-		
-			
 		}
 		return output;
 	}
@@ -93,21 +85,18 @@ public class C206_CaseStudy {
 		System.out.println("New Stall added");
 	}
 
-	// Delete Stall by ping ping 
+	// Delete Stall by ping ping
 	public static void deleteStall(ArrayList<Stall> StallList) {
 
 		String deleteStall = Helper.readString("Enter Stall to delete > ");
 		for (int i = 0; i < StallList.size(); i++) {
 			if (deleteStall.equalsIgnoreCase(StallList.get(i).getName())) {
 				StallList.remove(i);
-				System.out.println("Stall deleted successfully");
-				break;
 
-			}else {
-				System.out.println("Stall cannot be found");
-				break;
+				System.out.println("Stall deleted successfully");
+
 			}
 		}
-		
+
 	}
 }
